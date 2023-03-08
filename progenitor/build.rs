@@ -2,6 +2,10 @@ fn main() {
     let mut opts = built::Options::default();
     opts.set_dependencies(true);
 
+    for (key, value) in std::env::vars() {
+        println!("{}={}", key, value);
+    }
+
     let src = project_root::get_project_root().unwrap();
     let dst = std::path::Path::new(&std::env::var("OUT_DIR").unwrap())
         .join("built.rs");
