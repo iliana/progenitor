@@ -2,7 +2,12 @@ fn main() {
     let mut opts = built::Options::default();
     opts.set_dependencies(true);
 
-    println!("we are in {}", std::env::current_dir().unwrap().display());
+    let cwd = std::env::current_dir().unwrap();
+    println!("we are in {}", cwd.display());
+    println!("list of files:");
+    for result in std::fs::read_dir(cwd).unwrap() {
+        println!("{}", result.unwrap().path().display());
+    }
     for (key, value) in std::env::vars() {
         println!("{}={}", key, value);
     }
