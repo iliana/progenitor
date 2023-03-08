@@ -2,6 +2,7 @@ fn main() {
     let mut opts = built::Options::default();
     opts.set_dependencies(true);
 
+    println!("we are in {}", std::env::current_dir().unwrap().display());
     for (key, value) in std::env::vars() {
         println!("{}={}", key, value);
     }
